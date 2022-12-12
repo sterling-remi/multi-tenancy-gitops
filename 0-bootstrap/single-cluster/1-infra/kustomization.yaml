@@ -27,7 +27,7 @@ resources:
 #- argocd/namespace-mq.yaml
  - argocd/namespace-b2bi-prod.yaml
 #- argocd/namespace-b2bi-nonprod.yaml
-#- argocd/namespace-pem.yaml
+ - argocd/namespace-pem.yaml
 #- argocd/namespace-ssp.yaml
  - argocd/namespace-sccm.yaml
 #- argocd/serviceaccounts-ibm-common-services.yaml
@@ -36,10 +36,10 @@ resources:
 #- argocd/serviceaccounts-mq.yaml
  - argocd/serviceaccounts-b2bi-prod.yaml
 #- argocd/serviceaccounts-b2bi-nonprod.yaml
-#- argocd/serviceaccounts-pem.yaml
+ - argocd/serviceaccounts-pem.yaml
  - argocd/serviceaccounts-sccm.yaml
  - argocd/sfg-b2bi-clusterwide.yaml
-#- argocd/pem-b2bi-clusterwide.yaml
+ - argocd/pem-b2bi-clusterwide.yaml
  - argocd/sccm-clusterwide.yaml
 #- argocd/scc-wkc-iis.yaml
 #- argocd/norootsquash.yaml
