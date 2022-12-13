@@ -82,7 +82,7 @@ resources:
  - argocd/instances/ibm-sfg-db2-nonprod.yaml
  - argocd/instances/ibm-sfg-mq-nonprod.yaml
  - argocd/instances/ibm-sfg-b2bi-nonprod-setup.yaml
- - argocd/instances/ibm-sfg-b2bi-nonprod.yaml
+#- argocd/instances/ibm-sfg-b2bi-nonprod.yaml
 
 # Sterling Secure Proxy
 #- argocd/instances/sterling-secure-proxy-setup.yaml
