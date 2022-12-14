@@ -1,6 +1,6 @@
 # Deploy [Sterling File Gateway](https://developer.ibm.com/components/sterling/tutorials/)
 
-This recipe is for deploying the B2BI Sterling File Gateway in a single namespace (i.e. `b2bi-prod`): 
+This recipe is for deploying the B2BI Sterling File Gateway in a single namespace (i.e. `b2bi-nonprod`): 
 
 ![SFG single NS](images/sfg-single-ns.png)
 
@@ -13,9 +13,9 @@ This recipe is for deploying the B2BI Sterling File Gateway in a single namespac
 
     ```yaml
     - argocd/consolenotification.yaml
-    - argocd/namespace-b2bi-prod.yaml
+    - argocd/namespace-b2bi-nonprod.yaml
     - argocd/namespace-sealed-secrets.yaml
-    - argocd/serviceaccounts-b2bi-prod.yaml
+    - argocd/serviceaccounts-b2bi-nonprod.yaml
     - argocd/sfg-b2bi-clusterwide.yaml
     - argocd/daemonset-sync-global-pullsecret.yaml
     ```
@@ -46,10 +46,10 @@ This recipe is for deploying the B2BI Sterling File Gateway in a single namespac
 
 2. Modify the B2BI pre-requisites components which includes the secrets and PVCs required for the B2BI helm chart.
 
-    1. Go to the `ibm-sfg-b2bi-prod-setup` directory:
+    1. Go to the `ibm-sfg-b2bi-nonprod-setup` directory:
 
         ```bash
-        cd multi-tenancy-gitops-services/instances/ibm-sfg-b2bi-prod-setup
+        cd multi-tenancy-gitops-services/instances/ibm-sfg-b2bi-nonprod-setup
         ```
 
     1. Generate a Sealed Secret for the credentials.
@@ -75,7 +75,7 @@ This recipe is for deploying the B2BI Sterling File Gateway in a single namespac
         ```yaml
         - argocd/instances/ibm-sfg-db2-prod.yaml
         - argocd/instances/ibm-sfg-mq-prod.yaml
-        - argocd/instances/ibm-sfg-b2bi-prod-setup.yaml
+        - argocd/instances/ibm-sfg-b2bi-nonprod-setup.yaml
         ```
 
     1. **Optional** Modify the DB2 and MQ storage classes to the environment that you use, the files are in `${GITOPS_PROFILE}/2-services/argocd/instances`. Edit `ibm-sfg-db2-prod.yaml` and `ibm-sfg-mq-prod.yaml` to switch the storageClassName if necessary.
@@ -91,7 +91,7 @@ This recipe is for deploying the B2BI Sterling File Gateway in a single namespac
 1. Generate Helm Chart values.yaml for the Sterling File Gateway Helm Chart in the `multi-tenancy-gitops-services` repo; note that the default storage class is using `managed-nfs-storage` - if you are installing on ODF, set `RWX_STORAGECLASS=ocs-storagecluster-cephfs`.
 
     ```
-    cd multi-tenancy-gitops-services/instances/ibm-sfg-b2bi-prod
+    cd multi-tenancy-gitops-services/instances/ibm-sfg-b2bi-nonprod
     ./ibm-sfg-b2bi-overrides-values.sh
     ```
 
@@ -101,7 +101,7 @@ This recipe is for deploying the B2BI Sterling File Gateway in a single namespac
 1. Edit the Services layer `${GITOPS_PROFILE}/2-services/kustomization.yaml` by uncommenting the following line to install Sterling File Gateway, **commit** and **push** the changes and refresh the `services` Application in the ArgoCD console:
 
     ```yaml
-    - argocd/instances/ibm-sfg-b2bi-prod.yaml
+    - argocd/instances/ibm-sfg-b2bi-nonprod.yaml
     ```
 
     >  💡 **NOTE**  
@@ -116,7 +116,7 @@ This recipe is for deploying the B2BI Sterling File Gateway in a single namespac
 
 - Step 1:
     ```bash
-    cd multi-tenancy-gitops-services/instances/ibm-sfg-b2bi-prod
+    cd multi-tenancy-gitops-services/instances/ibm-sfg-b2bi-nonprod
     ```
 - Step 2:
   - Inside `values.yaml`, find & set 
@@ -136,7 +136,7 @@ This recipe is for deploying the B2BI Sterling File Gateway in a single namespac
 1.  Retrieve the Sterling File Gateway console URL.
 
     ```bash
-    oc get route -n b2bi-prod ibm-sfg-b2bi-prod-sfg-asi-internal-route-dashboard -o template --template='https://{{.spec.host}}'
+    oc get route -n b2bi-nonprod ibm-sfg-b2bi-nonprod-sfg-asi-internal-route-dashboard -o template --template='https://{{.spec.host}}'
     ```
 
 2. Log in with the default credentials:  username:`fg_sysadmin` password: `password` 
@@ -145,4 +145,3 @@ This recipe is for deploying the B2BI Sterling File Gateway in a single namespac
 ### Additional instance of Sterling File Gateway
 
 The current setup has an additional set of customized instance of Sterling File Gateway B2BI in `b2bi-nonprod` namespace. Follow the similar proceure above to run the updates for the `b2bi-nonprod` namespace. 
- [nonprod recipe](./sfg-recipe-nonprod.md)
