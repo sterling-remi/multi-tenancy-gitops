@@ -144,4 +144,4 @@ This recipe is for deploying the B2BI Sterling File Gateway in a single namespac
 
 ### Additional instance of Sterling File Gateway
 
-The current setup has an additional set of customized instance of Sterling File Gateway B2BI in `b2bi-nonprod` namespace. Follow the similar proceure above to run the updates for the `b2bi-nonprod` namespace. 
+The current setup has an additional set of customized instance of Sterling File Gateway B2BI in `b2bi-prod` namespace. Follow the similar proceure above to run the updates for the `b2bi-nonprod` namespace. 
