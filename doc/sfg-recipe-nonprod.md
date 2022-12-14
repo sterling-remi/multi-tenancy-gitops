@@ -73,8 +73,8 @@ This recipe is for deploying the B2BI Sterling File Gateway in a single namespac
 
     1. Edit the Services layer `${GITOPS_PROFILE}/2-services/kustomization.yaml` by uncommenting the following lines to install the pre-requisites for Sterling File Gateway.
         ```yaml
-        - argocd/instances/ibm-sfg-db2-prod.yaml
-        - argocd/instances/ibm-sfg-mq-prod.yaml
+        - argocd/instances/ibm-sfg-db2-nonprod.yaml
+        - argocd/instances/ibm-sfg-mq-nonprod.yaml
         - argocd/instances/ibm-sfg-b2bi-nonprod-setup.yaml
         ```
 
