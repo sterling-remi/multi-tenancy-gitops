@@ -57,12 +57,14 @@ This recipe is for deploying the B2BI Sterling File Gateway in a single namespac
         B2B_DB_SECRET=db2inst1 \
         JMS_PASSWORD=password JMS_KEYSTORE_PASSWORD=password JMS_TRUSTSTORE_PASSWORD=password \
         B2B_SYSTEM_PASSPHRASE_SECRET=password \
+        RWX_STORAGECLASS=ocs-storagecluster-cephfs \
         ./sfg-b2bi-secrets.sh
         ```
 
     1. Generate Persistent Volume Yamls required by Sterling File Gateway (the default is set in RWX_STORAGECLASS environment variable to `managed-nfs-storage` - if you are installing on ODF, set `RWX_STORAGECLASS=ocs-storagecluster-cephfs`)
 
         ```bash
+        RWX_STORAGECLASS=ocs-storagecluster-cephfs \
         ./sfg-b2bi-pvc-mods.sh
         ```
 
