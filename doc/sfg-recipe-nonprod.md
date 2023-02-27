@@ -78,7 +78,7 @@ This recipe is for deploying the B2BI Sterling File Gateway in a single namespac
         - argocd/instances/ibm-sfg-b2bi-nonprod-setup.yaml
         ```
 
-    1. **Optional** Modify the DB2 and MQ storage classes to the environment that you use, the files are in `${GITOPS_PROFILE}/2-services/argocd/instances`. Edit `ibm-sfg-db2-prod.yaml` and `ibm-sfg-mq-prod.yaml` to switch the storageClassName if necessary.
+    1. **Optional** Modify the DB2 and MQ storage classes to the environment that you use, the files are in `${GITOPS_PROFILE}/2-services/argocd/instances`. Edit `ibm-sfg-db2-nonprod.yaml` and `ibm-sfg-mq-nonprod.yaml` to switch the storageClassName if necessary.
 
 
     >  💡 **NOTE**  
